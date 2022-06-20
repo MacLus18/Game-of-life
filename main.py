@@ -1,5 +1,5 @@
 import pygame
-from classes.World import World
+from World import World
 
 pygame.init()
 
