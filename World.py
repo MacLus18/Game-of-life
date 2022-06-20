@@ -1,5 +1,5 @@
 import pygame
-from classes.Cell import Cell
+from Cell import Cell
 
 nbh = [
     [-1,-1],
@@ -70,11 +70,3 @@ class World:
                     self.data[i][j].setNextState(1)
                 elif nbh_num not in self.aliveNbh:
                     self.data[i][j].setNextState(0)
-
-
-    # def show_world(self):
-    #     for row in self.data:
-    #         for cell in row:
-    #             print(cell, end=' ')
-    #         print()
-
