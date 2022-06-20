@@ -14,10 +14,11 @@ class Cell(pygame.sprite.Sprite):
         self.image = Cell.states[self.state]
         self.rect = self.image.get_rect(center=(x, y))
 
-
+    # next state setter
     def setNextState(self, nextState):
         self.nextState = nextState
-
+    
+    # update function
     def update(self):
         self.state = self.nextState
         self.image = Cell.states[self.state]
