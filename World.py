@@ -70,3 +70,14 @@ class World:
                     self.data[i][j].setNextState(1)
                 elif nbh_num not in self.aliveNbh:
                     self.data[i][j].setNextState(0)
+
+    def get_data(self):
+        return self.data
+
+
+    # def show_world(self):
+    #     for row in self.data:
+    #         for cell in row:
+    #             print(cell, end=' ')
+    #         print()
+
