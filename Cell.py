@@ -20,5 +20,8 @@ class Cell(pygame.sprite.Sprite):
     def update(self):
         self.state = self.nextState
         self.image = Cell.states[self.state]
-
+        
+    def changeState(self):
+        self.state = (self.state + 1) % len(Cell.states)
+        self.image = Cell.states[self.state]
         
