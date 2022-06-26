@@ -22,12 +22,12 @@ class World:
             data = [[int(cell) for cell in line.split(' ')] for line in f]
         
         self.data = []
-        w = WIDTH / len(data[0])
-        h = HEIGHT / len(data)
+        self.w = WIDTH / len(data[0])
+        self.h = HEIGHT / len(data)
         self.cellsGroup = pygame.sprite.Group()
-        Cell.set_images_sizes(w, h)
+        Cell.set_images_sizes(self.w, self.h)
         
-        edgeCell = Cell(0, -w, -h)
+        edgeCell = Cell(0, -self.w, -self.h)
         
         self.data.append([])
         for i in range(len(data[0])+2):
@@ -37,7 +37,7 @@ class World:
             self.data.append([])
             self.data[i+1].append(edgeCell)
             for j in range(len(data[i])):
-                c = Cell(data[i][j], w/2 + j*w, h/2 + i*h)
+                c = Cell(data[i][j], self.w/2 + j*self.w, self.h/2 + i*self.h)
                 self.data[i+1].append(c)
                 self.cellsGroup.add(c)
             self.data[i + 1].append(edgeCell)
@@ -50,7 +50,6 @@ class World:
 
     def tick(self):
         self.update()
-        self.cellsGroup.draw(self.screen)
         self.calculateNextStates()
         
         
@@ -70,6 +69,16 @@ class World:
                     self.data[i][j].setNextState(1)
                 elif nbh_num not in self.aliveNbh:
                     self.data[i][j].setNextState(0)
+                else:
+                    self.data[i][j].setNextState(self.data[i][j].state)
                     
     def get_data(self):
         return self.data
+    
+    def draw(self):
+        self.cellsGroup.draw(self.screen)
+    
+    def changeCell(self, mouseX, mouseY):
+        row = int(mouseY/self.h) + 1
+        col = int(mouseX/self.w) + 1
+        self.data[row][col].changeState()
