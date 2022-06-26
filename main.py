@@ -1,4 +1,5 @@
 import pygame
+import os
 from World import World
 
 pygame.init()
@@ -11,8 +12,13 @@ pygame.display.set_caption('Game of Life')
 clock = pygame.time.Clock()
 running = True
 
-path = 'worlds/' + input('Enter the name of the world to be opened: ') + '.txt'
-game = World(screen, path ,WIDTH, HEIGHT, [3], [2, 3])
+worlds_dir = 'worlds'
+worlds = os.listdir(worlds_dir)
+for num, world in enumerate(worlds):
+    print(str(num)+'.', world)
+
+chosen_world = int(input('Enter the number of the world to be opened: '))
+game = World(screen, 'worlds/'+worlds[chosen_world],WIDTH, HEIGHT, [3], [2, 3])
 
 while running:
     for event in pygame.event.get():
