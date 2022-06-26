@@ -21,6 +21,11 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                pause = not pause
+                if pause is False:
+                    game.calculateNextStates()
 
     screen.fill((128,128,128))
     game.tick()
