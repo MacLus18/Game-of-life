@@ -29,9 +29,11 @@ while running:
                 pause = not pause
                 if pause is False:
                     game.calculateNextStates()
+         
 
     screen.fill((128,128,128))
-    game.tick()
+    if not pause:
+        game.tick()
     pygame.display.update()
 
     clock.tick(FPS)
