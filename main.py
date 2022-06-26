@@ -29,6 +29,12 @@ while running:
                 pause = not pause
                 if pause is False:
                     game.calculateNextStates()
+                    
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouseButtonPressed = mouse.get_pressed()
+            if mouseButtonPressed[0] and pause:
+                mouseX, mouseY = mouse.get_pos()
+                game.changeCell(mouseX, mouseY)
         
          
 
