@@ -8,9 +8,9 @@ SIZE = WIDTH, HEIGHT = 300, 300
 FPS = 10
 screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption('Game of Life')
-
 clock = pygame.time.Clock()
 running = True
+pause = True
 
 worlds_dir = 'worlds'
 worlds = os.listdir(worlds_dir)
